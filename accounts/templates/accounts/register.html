@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" id="container">
+    <!-- Sign Up Form -->
+    <div class="form-container sign-up-container">
+        <form method="post" action="{% url 'accounts:register' %}">
+            {% csrf_token %}
+            <h1>Create Account</h1>
+            <!-- Social Media Links (optional) -->
+            <!-- You can remove or keep these as per your preference -->
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fa fa-google"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <!-- Django Form Fields -->
+            {{ form.as_p }}
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <!-- Sign In Form -->
+    <div class="form-container sign-in-container">
+        <form method="post" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <h1>Sign In</h1>
+            <!-- Social Media Links (optional) -->
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fa fa-google"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <span>or use your account</span>
+            <!-- Login Form Fields -->
+            {{ login_form.as_p }}
+            <a href="{% url 'accounts:password_reset' %}">Forgot Your Password?</a>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+    <!-- Overlay Panels -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your details and start the journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

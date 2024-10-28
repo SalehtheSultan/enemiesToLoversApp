@@ -1,0 +1,9 @@
+<!-- templates/accounts/activation_email.html -->
+
+Hello {{ user.username }},
+
+Please click the link below to activate your account:
+
+http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
+
+Thank you!

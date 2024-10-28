@@ -1,0 +1,15 @@
+<!-- templates/navbar.html -->
+
+<nav>
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profiles:profile_view' %}">Profile</a></li>
+            <li><a href="{% url 'survey:survey_take' %}">Survey</a></li>
+            <li><a href="{% url 'matches:matches_view' %}">Matches</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
